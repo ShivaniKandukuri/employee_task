@@ -1,0 +1,25 @@
+<% if @device.errors.any? %>
+<ul>
+  <% @device.errors.full_messages.each do |m| %>
+  <%= m %>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with(model: @device,local: true) do |f| %>
+
+  <p>
+    <%= f.label :Name %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :Price %><br/>
+    <%= f.number_field :price %>
+  </p>
+
+  <p>
+    <%= f.submit "add"  %>
+  </p>
+
+<% end %>

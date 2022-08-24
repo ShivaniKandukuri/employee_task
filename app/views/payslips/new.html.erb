@@ -1,0 +1,6 @@
+<h1>Employee payslip</h1>
+<% if current_employee.role.name=='admin' %>
+<%= render 'form' %>
+<% else %>
+<p>Only admin generate payslips</p>
+<% end %>

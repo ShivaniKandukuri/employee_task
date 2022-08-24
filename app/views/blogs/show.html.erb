@@ -1,0 +1,23 @@
+<h1>Posts</h1>
+<p>
+  <strong>Post:</strong>
+  <%= @blog.post %>
+</p>
+<p>
+  <strong>Comments:</strong>
+  <%= render @blog.comments %>
+  <%= render partial:'comments/form',local:true %>
+</p>
+<% if !current_employee.nil? && current_employee.role.name != 'admin' %>
+  <% if @blog.liked?(current_employee) %>
+    <%= button_to "like", like_path(@blog),method:"put",disabled:true %>
+  <% else  %>
+    <%= button_to "like", like_path(@blog),method:"put" %>
+  <% end %>
+<% end %>
+
+
+
+
+
+<%= link_to 'Back', blogs_path %>

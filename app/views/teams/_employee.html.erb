@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>First_Name: </th>
+      <th>Last_Name: </th>
+      <th>Designation:</th>
+      <th>Email:</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @team.employees.each do |a| %>
+      <tr>
+        <td><%= a.first_name %></td>
+        <td><%= a.last_name %></td>
+        <td><%= a.role.name %></td>
+        <td><%= a.email %></td>
+
+      </tr>
+      <% end %>
+    </tbody>
+</table>

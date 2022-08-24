@@ -1,0 +1,18 @@
+<h1><strong>Your Payslip</strong></h1>
+<p><strong>Date:</strong><%= Date.today.strftime("%A %-d %B") %></p>
+<strong>TakeHome : </strong><%= @payslip.takehome %> |
+<strong>GrossPay : </strong><%= @payslip.grosspay %> |
+<strong>Deductions : </strong><%= @payslip.deductions %>
+<p></p>
+-------------------------------------------------------------
+<h1>Earnings</h1>
+<p><strong>HouseRent : </strong><%= @payslip.house_rent%></p>
+<p><strong>Basic : </strong><%= @payslip.basic %></p>
+<p><strong>Conveyence</strong><%= @payslip.conveyence %></p>
+<p><strong>Fixed</strong><%= @payslip.fixed %></p>
+<p><strong>Medical : </strong><%= @payslip.medical %></p>
+----------------------------------------------------------------
+<h1>Deductions</h1>
+<p><strong>ProfessionalTax : </strong><%= @payslip.professional_tax %></p>
+<p><strong>EPFContribution : </strong><%= @payslip.epf_contribution %></p>
+<p><%= link_to 'Download',payslip_employee_path(@employee,format: :pdf) %></p>

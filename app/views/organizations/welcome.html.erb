@@ -1,0 +1,44 @@
+<h1><strong>WELCOME TO PRASTHANA SOFTWARE SOLUTIONS</strong></h1>
+<%= image_tag 'employee_task_images/prasthana.png',width:'600px',height:'400px'%>
+<p></p>
+<%= link_to 'HOME', organizations_home_path %> |
+<%= link_to 'ABOUT US', organizations_aboutus_path %> |
+<%= link_to 'CONTACT', organizations_contact_path %>
+
+
+<p></p>
+
+<% if logged_in? %>
+   <% if current_employee.role.name=='admin' %>
+   <%= link_to 'ADD EMPLOYEE',sign_up_path %> | <%= link_to 'EMPLOYEES',employees_path %>
+
+   <p></p>
+   <%= link_to 'ADD ASSETS',new_device_path %> |
+   <%= link_to 'ASSETS',devices_path %>
+   <p></p>
+   <%= link_to 'ADD TEAMS',new_team_path %> |
+   <%= link_to 'TEAMS',teams_path %>
+   <p></p>
+   <%= link_to 'ADD ROLES',new_role_path %> |
+   <%= link_to 'ROLES',roles_path %>
+   <p></p>
+   <%= link_to 'ADD IDCARD',new_idcard_path %> |
+   <%= link_to 'IDCARDS',idcards_path %>
+   <p></p>
+   <%= link_to 'ADD PAYSLIPS',new_payslip_path %> |
+   <%= link_to 'PAYSLIPS',payslips_path %>
+   <p></p>
+   <%= link_to 'ADD POSTS',new_blog_path %> | <%= link_to 'POSTS',blogs_path %> | <%= link_to 'LIKES',likes_path %>
+   <% else %>
+     <%= link_to 'POSTS',blogs_path %> | <%= link_to 'LIKES',likes_path %>
+     <p><%= link_to 'EMPLOYEES',employees_path %></p>
+     <p><%= link_to 'TEAMS',teams_path %></p>
+   <% end %>
+   <p><%= link_to 'NEW HIRES',employees_new_hire_path %></p>
+   <p><%= link_to 'MY PROFILE', employee_path(current_employee)%></p>
+   <p><%= link_to 'MY ID', idcard_employee_path(current_employee)%></p>
+   <p><%= link_to 'MY PAYSLIP', payslip_employee_path(current_employee)%></p>
+   <p><%= link_to 'LOG OUT',logout_path,method: :delete %></p>
+<% else %>
+   <p><%= link_to 'LOG IN',login_path %></p>
+<% end %>

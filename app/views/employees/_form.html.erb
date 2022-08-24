@@ -1,0 +1,63 @@
+<% if @employee.errors.any? %>
+<ul>
+  <% @employee.errors.full_messages.each do |m| %>
+  <%= m %>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with(model: @employee,local: true) do |f| %>
+
+  <p>
+    <%= f.label :First_Name %><br/>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :Last_Name %><br/>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :Salary %><br/>
+    <%= f.number_field :salary %>
+  </p>
+  <p>
+    <%= f.label :Age %><br/>
+    <%= f.number_field :age %>
+  </p>
+  <p>
+    <%= f.label :Gender %><br/>
+    <%= f.text_field :gender %>
+  </p>
+  <p>
+    <%= f.label :Email %><br/>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.label :Password %><br/>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :DOJ %><br/>
+    <%= f.date_field :dateofjoining %>
+  </p>
+  <p>
+    <%= f.label :Address %><br/>
+    <%= f.text_area  :address %>
+  </p>
+  <p>
+    <%= f.label :Mobile %><br/>
+    <%= f.number_field:mobilenumber %>
+  </p>
+
+  <p><%= f.collection_select(:device_id, Device.all, :id, :name, { :prompt => 'Select a device', :selected => @employee.device_id }, { class: 'form-control' }) %></p>
+
+  <p><%= f.collection_select(:team_id,Team.all, :id, :name, { :prompt => 'Select a team', :selected => @employee.team_id }, { class: 'form-control' }) %></p>
+
+  <p><%= f.collection_select(:role_id,Role.all, :id, :name, { :prompt => 'Select a role', :selected => @employee.role_id }, { class: 'form-control' }) %></p>
+
+  <p>
+    <%= f.submit(@employee.new_record? ? "Sign up" : "Update Employee") %>
+  </p>
+
+<% end %>

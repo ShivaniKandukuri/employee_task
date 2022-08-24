@@ -1,0 +1,21 @@
+<% if @blog.errors.any? %>
+<ul>
+  <% @blog.errors.full_messages.each do |m| %>
+  <%= m %>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with(model: @blog,local: true) do |f| %>
+
+  <p>
+    <%= f.label :Post %><br/>
+    <%= f.text_area :post %>
+  </p>
+
+
+  <p>
+    <%= f.submit "add"  %>
+  </p>
+
+<% end %>

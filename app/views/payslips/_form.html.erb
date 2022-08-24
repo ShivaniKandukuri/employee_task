@@ -1,0 +1,10 @@
+
+<%= form_with(model: @payslip,local: true) do |f| %>
+<p>
+  <%= f.label :employee %><br/>
+  <%= f.number_field :employee_id %>
+</p>
+<p>
+  <%= f.submit "generate payslip" %>
+</p>
+<% end %>

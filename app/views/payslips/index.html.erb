@@ -1,0 +1,29 @@
+a
+<h1>Payslips of all employees</h1>
+<% @payslips.each do |i| %>
+<p><strong>Employee id : </strong>EMP00<%= i.employee.id %></p>
+<p><strong>Employee : </strong><%= i.employee.first_name %> <%= i.employee.last_name %></p>
+<strong>TakeHome : </strong><%= i.takehome %> |
+<strong>GrossPay : </strong><%= i.grosspay %> |
+<strong>Deductions : </strong><%= i.deductions %>
+<p></p>
+-------------------------------------------------------------
+<h1>Earnings</h1>
+<p><strong>HouseRent : </strong><%= i.house_rent%></p>
+<p><strong>Basic : </strong><%= i.basic %></p>
+<p><strong>Conveyence</strong><%= i.conveyence %></p>
+<p><strong>Fixed</strong><%= i.fixed %></p>
+<p><strong>Medical : </strong><%= i.medical %></p>
+----------------------------------------------------------------
+<h1>Deductions</h1>
+<p><strong>ProfessionalTax : </strong><%= i.professional_tax %></p>
+<p><strong>EPFContribution : </strong><%= i.epf_contribution %></p>
+<p><%= link_to 'Download',payslip_path(i,format: :pdf) %></p>
+<p><%= link_to 'show',payslip_path(i) %></p>
+######################################################################
+<% end %>
+
+<br>
+<% if current_employee.role.name=='admin' %>
+<%= link_to 'New Payslip', new_payslip_path %>
+<% end %>

@@ -1,0 +1,6 @@
+<h1>Employee Sign up</h1>
+<% if current_employee.role.name=='admin' %>
+<%= render 'form' %>
+<% else %>
+<p>Only admin can add employee</p>
+<% end %>

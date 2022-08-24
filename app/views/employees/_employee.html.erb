@@ -1,0 +1,60 @@
+<table>
+  <thead>
+    <tr>
+      <th>First_Name: </th>
+      <th>Last_Name: </th>
+      <th>Designation:</th>
+      <% if current_employee.role.name=='admin' %>
+      <th>Salary:</th>
+      <% end %>
+      <th>Age:</th>
+      <th>Gender:</th>
+      <th>Email:</th>
+      <th>DOJ</th>
+      <th>Address</th>
+      <th>mobilenumber</th>
+      <th>Team</th>
+      <th>Image</th>
+      <th colspan="7"> Actions : </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |a| %>
+      <tr>
+        <td><%= a.first_name %></td>
+        <td><%= a.last_name %></td>
+        <td><%= a.role.name %></td>
+        <% if current_employee.role.name=='admin' %>
+        <td><%= a.salary %></td>
+        <% end %>
+        <td><%= a.age %></td>
+        <td><%= a.gender %></td>
+        <td><%= a.email %></td>
+        <td><%= a.dateofjoining %></td>
+        <td><%= a.address %></td>
+        <td><%= a.mobilenumber %></td>
+        <td><%= a.team.name %></td>
+        <td><%= image_tag(a.image.picture.url) %></td>
+        <td><%= link_to 'Show',employee_path(a)%>
+          <% if logged_in?  %>
+          <% if a == current_employee || current_employee.role.name=='admin' %>
+             <%= link_to "Edit", edit_employee_path(a) %>
+             <%= link_to 'idcard', idcard_employee_path(a) %>
+             <%= link_to 'payslip',payslip_employee_path(a) %>
+             <%= link_to 'team',team_employee_path(a) %>
+            <%= link_to 'asset',asset_employee_path(a) %>
+            <%= link_to 'role',role_employee_path(a) %>
+          <% end %>
+          <% if current_employee.role.name=='admin' %>
+             <%= link_to "Delete Employee", employee_path(current_employee), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
+<p>
+  <%= link_to 'Add Employee',sign_up_path%>
+</p>

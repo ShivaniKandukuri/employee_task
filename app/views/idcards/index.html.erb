@@ -1,0 +1,15 @@
+<h1>Id cards</h1>
+
+    <% @idcards.each do |i| %>
+
+        <p><strong>Name:</strong><%= i.employee.first_name %> <%= i.employee.last_name %></p>
+        <p><strong>Employee_id:</strong>EMP00<%= i.employee.id %></p>
+        <p><%= image_tag(i.employee.image.picture.url) %></p>
+
+        <p><%= link_to 'show',idcard_path(i) %></p>
+    <% end %>
+
+<br>
+<% if current_employee.role.name=='admin' %>
+<%= link_to 'NewId', new_idcard_path %>
+<% end %>

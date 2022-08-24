@@ -1,0 +1,20 @@
+<% if @role.errors.any? %>
+<ul>
+  <% @role.errors.full_messages.each do |m| %>
+  <%= m %>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_with(model: @role,local: true) do |f| %>
+
+  <p>
+    <%= f.label :Name %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit "add"  %>
+  </p>
+
+<% end %>

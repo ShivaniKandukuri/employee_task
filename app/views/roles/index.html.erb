@@ -1,0 +1,27 @@
+<h1>roles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roles.each do |role| %>
+      <tr>
+        <td><%= role.name %></td>
+
+        <td><%= link_to 'Show', role %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_employee.role.name=='admin' %>
+<%= link_to 'New role', new_role_path %>
+<% end %>

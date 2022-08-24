@@ -1,0 +1,6 @@
+<h1>Employee Idcard</h1>
+<% if current_employee.role.name=='admin' %>
+<%= render 'form' %>
+<% else %>
+<p>Only admin can create ids</p>
+<% end %>

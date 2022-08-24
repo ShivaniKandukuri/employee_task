@@ -1,0 +1,15 @@
+<p>
+  <strong>Team Name:</strong>
+  <%= @team.name %>
+</p>
+<p>
+  <strong>Added_by:</strong>
+  <%= @team.added_by %>
+</p>
+<p><strong>Employees Of the team</strong></p>
+<% @team.employees.each do |i| %>
+<p><strong>Name:</strong><%= i.first_name %> <%= i.last_name %></p>
+<p><strong>Designation:</strong><%= i.role.name %></p>
+<% end %>
+
+<%= link_to 'Back', teams_path %>

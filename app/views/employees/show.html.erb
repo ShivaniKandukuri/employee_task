@@ -1,0 +1,40 @@
+<h1> Employee details </h1>
+
+
+<p><strong>First_Name :</strong><%= @employee.first_name %></p>
+<p><strong>Last_Name :</strong><%= @employee.last_name %></p>
+<p><strong>Designation :</strong><%= @employee.role.name%></p
+<p><strong>Age :</strong><%= @employee.age %></p>
+<% if current_employee.role.name=='admin' %>
+<p><strong>Salary :</strong><%= @employee.salary %></p>
+<% end %>
+<p><strong>Gender :</strong><%= @employee.gender %></p>
+<p><strong>Email :</strong><%= @employee.email %></p>
+<p><strong>DOJ :</strong><%= @employee.dateofjoining %></p>
+<p><strong>Address :</strong><%= @employee.address %></p>
+<p><strong>Mobilenumber :</strong><%= @employee.mobilenumber %></p>
+<p><strong>Team :</strong><%= @employee.team.name %></p>
+<p><strong>Profile pic:</strong><%= image_tag(@employee.image.picture.url) %></p><br>
+<% if logged_in?  %>
+<% if current_employee.role.name!='admin' %>
+   <p><%= link_to "EDIT", edit_employee_path(@employee) %></p>
+   <p><%= link_to 'LIKES',likes_path %></p>
+   <p><%= link_to 'IDCARD',idcard_employee_path(@employee) %></p>
+   <p><%= link_to 'PAYSLIP',payslip_employee_path(@employee) %></p>
+   <p><%= link_to 'TEAM',team_employee_path(@employee) %></p>
+<% end %>
+<% if current_employee.role.name=='admin' %>
+   <p><%= link_to "EDIT", edit_employee_path(@employee) %></p>
+   <p><%= link_to "DELETE EMPLOYEE", employee_path(current_employee), method: :delete, data: { confirm: "Are you sure?" } %></p>
+   <p><%= link_to 'LIKES',likes_path %></p>
+   <p><%= link_to 'PAYSLIP',payslip_employee_path(@employee) %></p>
+   <p><%= link_to 'IDCARD',idcard_employee_path(@employee) %></p>
+   <p><%= link_to 'TEAM',team_employee_path(@employee) %></p>
+<% end %>
+
+<% end %>
+
+
+
+<p><%= link_to 'LOG OUT',logout_path,method: :delete %></p>
+<p><%= link_to 'BACK' ,root_path %></p>

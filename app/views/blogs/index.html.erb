@@ -1,0 +1,32 @@
+<h1>blogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.post %></td>
+
+        <td><%= link_to 'Show', blog %></td>
+        <td><% if !current_employee.nil? && current_employee.role.name != 'admin' %>
+          <% if blog.liked?(current_employee) %>
+            <%= button_to "like", like_path(blog),method:"put",disabled:true %>
+          <% else  %>
+            <%= button_to "like", like_path(blog),method:"put" %>
+          <% end %>
+        <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_employee.role.name=='admin' %>
+<%= link_to 'New blog', new_blog_path %>
+<% end %>

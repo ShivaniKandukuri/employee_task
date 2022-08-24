@@ -1,0 +1,12 @@
+<p>
+  <strong>role Name:</strong>
+  <%= @role.name %>
+</p>
+
+<p><strong>Employees belonging to this role</strong></p>
+<% @role.employees.each do |i| %>
+<p><strong>Name:</strong><%= i.first_name %> <%= i.last_name %></p>
+<p><strong>Designation:</strong><%= i.role.name %></p>
+<% end %>
+
+<%= link_to 'Back', roles_path %>
